@@ -1,8 +1,8 @@
-# API Documentation for Sellar Asset Lists Package
+# API Documentation for Stellar Asset Lists Package
 
 ## Overview
 
-The Sellar Asset Lists package is designed to facilitate the integration of curated Stellar asset lists into Stellar applications and services. This package adheres to the Stellar Ecosystem Proposal (SEP-42) standard, providing a standardized mechanism for defining, validating, and sharing lists of Stellar assets. This helps to enhance user experiences and trust by ensuring consistency and ease of integration across the Stellar network.
+The Stellar Asset Lists package is designed to facilitate the integration of curated Stellar asset lists into Stellar applications and services. This package adheres to the Stellar Ecosystem Proposal (SEP-42) standard, providing a standardized mechanism for defining, validating, and sharing lists of Stellar assets. This helps to enhance user experiences and trust by ensuring consistency and ease of integration across the Stellar network.
 
 It is compatible with Flutter Desktop (Windows, Linux, MacOS), IOS, Android, and Web.
 [![pub](https://img.shields.io/pub/v/stellar_asset_lists.svg?style=flat)](https://pub.dev/packages/stellar_asset_lists)
@@ -12,6 +12,51 @@ It is compatible with Flutter Desktop (Windows, Linux, MacOS), IOS, Android, and
 - Retrieve specific asset lists using their URL.
 - Configurable resolver options for catalogue and IPFS gateway URLs.
 - Automatic resolution of asset icons.
+
+## Usage in your project
+
+1. Fetch asset lists from the community-managed catalogue:
+  `fetchAvailableAssetLists()`
+
+2. Show available lists fetched from the catalogue to your users, so they could select one or more lists from providers they trust. Save selected lists in user settings.
+
+3. Load selected list and cache the result:
+  `fetchAssetList('list_url')`
+
+4. Utilize a user-selected list to show only relevant assets in transfer/trade/swap interfaces. This helps to combat various fraudulent schemes while delegating all the power of decision-making to end-users in a truly decentralized manner.
+
+5. Profit! Safer, more streamlined UX.
+
+## Usage Example
+
+```dart
+void main() async {
+  final assetListResolver = StellarAssetListResolver();
+
+  try {
+    // Fetch available asset lists
+    List<AssetListDescriptor> assetLists = await assetListResolver.fetchAvailableAssetLists();
+    for (var list in assetLists) {
+      print('Asset List: ${list.name}, Provider: ${list.provider}');
+    }
+
+    // Fetch a specific asset list
+    if (assetLists.isNotEmpty) {
+      AssetList assetList = await assetListResolver.fetchAssetList(assetLists[0].url);
+      print('Fetched Asset List: ${assetList.name}');
+    }
+
+    // Update resolver options
+    assetListResolver.setAssetListResolverOptions(
+      catalogueUrl: 'https://new-catalogue-url.example.com',
+      ipfsGatewayUrl: 'https://new-ipfs-gateway.example.com',
+    );
+  } catch (e) {
+    print('Error: $e');
+  }
+}
+```
+
 
 ## Classes and Interfaces
 
@@ -39,7 +84,7 @@ The `IStellarAssetListResolver` interface defines the methods that must be imple
 
 ### ResolverOptions
 
-The `ResolverOptions` class holds configuration options for the Sellar Asset Lists.
+The `ResolverOptions` class holds configuration options for the Stellar Asset Lists.
 
 #### Properties
 
@@ -132,39 +177,10 @@ The `StellarAssetListResolver` class implements the `IStellarAssetListResolver` 
     - `item`: The item (either `AssetListDescriptor` or `Asset`) to resolve the icon for.
   - **Returns**: `void`
 
-## Usage Example
-
-```dart
-void main() async {
-  final assetListResolver = StellarAssetListResolver();
-
-  try {
-    // Fetch available asset lists
-    List<AssetListDescriptor> assetLists = await assetListResolver.fetchAvailableAssetLists();
-    for (var list in assetLists) {
-      print('Asset List: ${list.name}, Provider: ${list.provider}');
-    }
-
-    // Fetch a specific asset list
-    if (assetLists.isNotEmpty) {
-      AssetList assetList = await assetListResolver.fetchAssetList(assetLists[0].url);
-      print('Fetched Asset List: ${assetList.name}');
-    }
-
-    // Update resolver options
-    assetListResolver.setAssetListResolverOptions(
-      catalogueUrl: 'https://new-catalogue-url.example.com',
-      ipfsGatewayUrl: 'https://new-ipfs-gateway.example.com',
-    );
-  } catch (e) {
-    print('Error: $e');
-  }
-}
-```
 
 ## Contributing
 
-Contributions to the Sellar Asset Lists package are welcome. If you find a bug or want to add a feature, please open an issue or submit a pull request on GitHub.
+Contributions to the Stellar Asset Lists package are welcome. If you find a bug or want to add a feature, please open an issue or submit a pull request on GitHub.
 
 ## License
 
