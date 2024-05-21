@@ -5,7 +5,7 @@
 The Sellar Asset Lists package is designed to facilitate the integration of curated Stellar asset lists into Stellar applications and services. This package adheres to the Stellar Ecosystem Proposal (SEP-42) standard, providing a standardized mechanism for defining, validating, and sharing lists of Stellar assets. This helps to enhance user experiences and trust by ensuring consistency and ease of integration across the Stellar network.
 
 It is compatible with Flutter Desktop (Windows, Linux, MacOS), IOS, Android, and Web.
-[![pub](https://img.shields.io/pub/v/steller_asset_lists.svg?style=flat)](https://pub.dev/packages/steller_asset_lists)
+[![pub](https://img.shields.io/pub/v/stellar_asset_lists.svg?style=flat)](https://pub.dev/packages/stellar_asset_lists)
 
 ### Key Features:
 - Fetch and parse available asset lists from a central catalogue.
