@@ -20,11 +20,11 @@ final resolverOptions = ResolverOptions();
 
 /// Class representing a descriptor for an asset list.
 class AssetListDescriptor {
-  String name;
-  String provider;
-  String description;
-  String icon;
-  String url;
+  String? name;
+  String? provider;
+  String? description;
+  String? icon;
+  String? url;
 
   AssetListDescriptor({
     required this.name,
@@ -51,10 +51,10 @@ class Asset {
   String? contract;
   String? code;
   String? issuer;
-  String name;
-  String org;
-  String domain;
-  String icon;
+  String? name;
+  String? org;
+  String? domain;
+  String? icon;
   int? decimals;
   String? comment;
 
@@ -88,11 +88,11 @@ class Asset {
 
 /// Class representing a full list of assets.
 class AssetList {
-  String name;
-  String provider;
-  String description;
-  String version;
-  String feedback;
+  String? name;
+  String? provider;
+  String? description;
+  String? version;
+  String? feedback;
   List<Asset> assets;
 
   AssetList({
