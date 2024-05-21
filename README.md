@@ -15,9 +15,9 @@ It is compatible with Flutter Desktop (Windows, Linux, MacOS), IOS, Android, and
 
 ## Classes and Interfaces
 
-### IAssetListResolver
+### IStellarAssetListResolver
 
-The `IAssetListResolver` interface defines the methods that must be implemented by any class that provides asset list resolution functionality.
+The `IStellarAssetListResolver` interface defines the methods that must be implemented by any class that provides asset list resolution functionality.
 
 #### Methods
 
@@ -99,9 +99,9 @@ The `AssetList` class represents a full list of assets.
 
 - **fromJson**: Creates an instance of `AssetList` from a JSON map.
 
-### AssetListResolver
+### StellarAssetListResolver
 
-The `AssetListResolver` class implements the `IAssetListResolver` interface, providing methods to fetch and parse asset lists.
+The `StellarAssetListResolver` class implements the `IStellarAssetListResolver` interface, providing methods to fetch and parse asset lists.
 
 #### Methods
 
@@ -136,7 +136,7 @@ The `AssetListResolver` class implements the `IAssetListResolver` interface, pro
 
 ```dart
 void main() async {
-  final assetListResolver = AssetListResolver();
+  final assetListResolver = StellarAssetListResolver();
 
   try {
     // Fetch available asset lists
