@@ -1,4 +1,4 @@
-import 'package:steller_asset_lists/stellar_asset_lists.dart';
+import 'package:stellar_asset_lists/stellar_asset_lists.dart';
 
 void main() {
   final resolver = StellarAssetListResolver();
